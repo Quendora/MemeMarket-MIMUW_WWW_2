@@ -1,0 +1,10 @@
+extends layout
+block content
+    div()
+        header(class='summaryViewHeader')
+            b Stwórz swój własny quiz!
+        h1="Podaj liczbę pytań"
+        form(method="POST" action='/prepareQuiz')
+            input(type="hidden" name="_csrf" value=csrfToken)
+            input(type=number, name="qNum", placeholder="Liczba pytań", required)
+            input(type="submit" value="Dalej")

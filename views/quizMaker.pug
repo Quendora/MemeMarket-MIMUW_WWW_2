@@ -1,0 +1,26 @@
+extends layout
+block content
+    header(class='summaryViewHeader')
+        b Stwórz swój własny quiz!
+    form(method="POST" action='/makeQuiz')
+        input(type="hidden" name="_csrf" value=csrfToken)
+        a Nazwa quizu
+        br
+        input(type="text", name="name", placeholder="Nazwa", required)
+        br
+        a Czas trwania (s)
+        br
+        input(type="text", name="time", placeholder="Czas", required)
+        br
+        each number in numbers
+            br
+            br
+            a Pytanie nr #{number + 1}
+            br
+            input(type="text", name="que" + number, placeholder="Pytanie", required)
+            br
+            input(type="text", name="ans" + number, placeholder="Odpowiedź", required)
+            br
+            input(type="text", name="pen" + number, placeholder="Kara (s)", required)
+        br
+        input(type="submit" value="Wyślij")

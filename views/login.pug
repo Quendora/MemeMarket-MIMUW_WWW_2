@@ -1,0 +1,20 @@
+extends layout
+block content
+    div(class='login')
+        unless authorised
+            h1="Logowanie"
+            form(method="POST" action='/login')
+                input(type="hidden" name="_csrf" value=csrfToken)
+                input(id="log" type="text", name="login", placeholder="Login", required)
+                input(id="pass" type="password", name="password", placeholder="Hasło", required)
+                input(id="zaloguj" type="submit" value="Zaloguj")
+        else
+            h1="Witaj " + authorised
+            form(method="POST" action='/logout')
+                input(type="hidden" name="_csrf" value=csrfToken)
+                br
+                input(type="submit" value="Wyloguj")
+            form(id="changePass" method="GET" action='/changepass')
+                input(type="hidden" name="_csrf" value=csrfToken)
+                br
+                input(type="submit" value="Zmień hasło")

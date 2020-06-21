@@ -1,0 +1,19 @@
+html
+    head
+        title= title
+    style
+        include ../static/style.css
+    body.container
+        block.navbar
+            ul
+                li
+                    a(id='home' href='/') Home
+                li
+                    a(id="usr_panel" href='/login') User panel
+                li#author
+                    if authorised
+                        a= authorised
+                    else
+                        a(id="usr_name")= "Guest"
+        block.con
+            block content

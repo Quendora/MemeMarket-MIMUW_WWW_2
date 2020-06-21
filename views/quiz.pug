@@ -1,0 +1,64 @@
+extends layout
+block content
+    div(class='chooseQuiz')
+        h1="Wybierz quiz"
+        ul(class="login")
+            each quiz in quizzes
+                li(class="quizToChoose")
+                    a(class="name") #{quiz.name}
+                    p(hidden) #{quiz.id}
+    div(id='quizView')
+        header(id='quizViewHeader')
+        #question_num.utility
+            p#question_num_text.utilities_text NR PYTANIA
+            p#question_num_num.utilities_var
+        #num_of_questions.utility
+            p#num_of_questions_text.utilities_text LICZBA PYTAŃ;
+            p#num_of_questions_num.utilities_var
+        #remaining_time.utility
+            p#remaining_time_text.utilities_text POZOSTALY CZAS
+            p#remaining_time_num.utilities_var
+        #penalty.utility
+            p#penalty_text.utilities_text KARA (SEKUNDY)
+            p#penalty_num.utilities_var
+        #question_window
+            p#question_text
+            input#answer_text(type='text')
+        form(method='POST')
+        input(type="hidden" name="_csrf" value=csrfToken)
+        input#previous_question(type='submit' value='POPRZEDNIE')
+
+        form(method='POST')
+        input(type="hidden" name="_csrf" value=csrfToken)
+        input#cancel_quiz(type='submit' value='ANULUJ')
+
+        form(method='POST')
+        input(type="hidden" name="_csrf" value=csrfToken)
+        input#next_question(type='submit' value='NASTĘPNE')
+
+        form(method='POST')
+        input(type="hidden" name="_csrf" value=csrfToken)
+        input#stop_quiz(type='submit' value='STOP')
+
+    div(id='summaryView')
+        header(class='summaryViewHeader')
+            b Podsumowanie
+        p#timeLeft
+        p#penaltySum
+            b SUMA KAR:
+        p#totalScore
+            b WYNIK:
+        table#summaryTable
+            thread
+                tr#summaryTableThread
+                    th PYTANIE
+                    th ODPOWIEDŹ
+                    th CZAS (s)
+                    th KARA (s)
+            tbody#summaryTableBody
+
+    div(id='error')
+        header(class='summaryViewHeader')
+            b(id="error_mess") ERROR: JUŻ ROZWIĄZAŁEŚ TEN QUIZ!
+
+    script(type='module' src='main.js')

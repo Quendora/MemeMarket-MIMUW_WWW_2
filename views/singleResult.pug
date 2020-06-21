@@ -1,0 +1,50 @@
+extends layout
+block content
+    div(id='summaryStatsView')
+        header(class='summaryViewHeader')
+            b Twój wynik: #{summary.score}
+        table#summaryTable
+            thread
+                tr#summaryTableThread
+                    th PYTANIE
+                    th ODP
+                    th POPRAWNA
+                    th CZAS (s)
+                    th ŚREDNI (s)
+                    th KARA (s)
+            tbody#summaryTableBody
+                each quiz in summary.userStats
+                    if quiz.valid
+                        tr(style={'background-color': 'lightgreen'})
+                            td #{quiz.question}
+                            td #{quiz.answer}
+                            td #{quiz.corrAnswer}
+                            td #{quiz.time}
+                            td #{quiz.avg}
+                    else
+                        tr(style={'background-color': 'f1807d'})
+                            td #{quiz.question}
+                            td #{quiz.answer}
+                            td #{quiz.corrAnswer}
+                            td #{quiz.time}
+                            td #{quiz.avg}
+                            td #{quiz.penalty}
+
+        div(id='summaryBest')
+            h1(class='summaryViewHeader')
+                b Najlepsi:
+
+            each user in summary.bestStats
+                div(class='bestUser')
+                    a(class='bestUsr') #{user.login}
+                    a(class='bestUsr') Wynik: #{user.score}
+                    table#summaryBestTable
+                        thread
+                            tr#summaryBestTableThread
+                                th PYTANIE
+                                th CZAS (s)
+                        tbody#summaryBestTableBody
+                            each stats in user.stats
+                                tr
+                                    td #{stats.question}
+                                    td #{stats.time}

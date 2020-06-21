@@ -1,0 +1,16 @@
+extends layout
+block content
+    div(id='mainView')
+        img(id="logo" src="quizLogo.png" alt="logo quizu")
+        if authorised
+            form(method="POST" action='/choosequiz')
+                input(type="hidden" name="_csrf" value=csrfToken)
+                input(id="start_quiz" type="submit" value="Zacznij nowy quiz!")
+
+            form(method="POST" action='/bestResults')
+                input(type="hidden" name="_csrf" value=csrfToken)
+                input(id="best_results" type="submit" value="Zobacz najlepsze wyniki")
+
+            form(method="GET" action='/prepareQuiz')
+                input(type="hidden" name="_csrf" value=csrfToken)
+                input(type="submit" value="Stwórz własny quiz")

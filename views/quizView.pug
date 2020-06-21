@@ -1,0 +1,42 @@
+doctype html
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    title Quiz
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel='stylesheet' type='text/css' media='screen' href='style.css')
+.navbar
+    ul
+        li
+            a.active(href='/') Home
+        li
+            a(href='/login') User
+        li(style='float:right')
+            a Guest
+#quizView
+    header#quizViewHeader
+    #question_num.utility
+        p#question_num_text.utilities_text NR PYTANIA
+        p#question_num_num.utilities_var
+    #num_of_questions.utility
+        p#num_of_questions_text.utilities_text LICZBA PYTAŃ;
+        p#num_of_questions_num.utilities_var
+    #remaining_time.utility
+        p#remaining_time_text.utilities_text POZOSTALY CZAS
+        p#remaining_time_num.utilities_var
+    #penalty.utility
+        p#penalty_text.utilities_text KARA (SEKUNDY)
+        p#penalty_num.utilities_var
+    #question_window
+        p#question_text
+        input#answer_text(type='text' pattern='[A-Za-z]{3}')
+    form(method='POST' action='/login')
+    input#previous_question(type='submit' value='POPRZEDNIE')
+    form(method='POST' action='/login')
+    input#cancel_quiz(type='submit' value='ANULUJ')
+    form(method='POST' action='/login')
+    input#next_question(type='submit' value='NASTĘPNE')
+    form(method='POST' action='/login')
+    input#stop_quiz(type='submit' value='STOP')
+script(type='module' src='main.js')
+    window.data

@@ -1,0 +1,685 @@
+#error {
+  display: none;
+}
+
+.navbar {
+  margin: auto;
+  position: relative;
+  width: auto;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar li#author {
+  float:right;
+}
+
+.navbar li {
+  float:left;
+  border-right:1px solid #bbb;
+}
+
+.navbar li:last-child {
+  border-right: none;
+}
+
+.navbar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.navbar .active {
+  background-color: #4CAF50;
+}
+
+.login input,
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  margin: 5px 0;
+  opacity: 0.85;
+  display: inline-block;
+  font-size: 17px;
+  line-height: 20px;
+  text-decoration: none; /* remove underline from anchors */
+  background-color: #f1ede7;
+  text-align: center;
+}
+
+.login input[type=submit] {
+  background-color: #4CAF50;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.login input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.login {
+  margin: auto;
+  position: relative;
+  width: auto;
+  text-align: center;
+}
+
+/* -------------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------- */
+
+
+.chooseQuiz {
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  width: auto;
+  text-align: center;
+}
+
+.chooseQuiz ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.chooseQuiz li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.chooseQuiz li a:hover:not(.active) {
+  background-color: #555;
+}
+
+
+/* -------------------------------------------------------------------------------------- */
+
+
+#mainView {
+  display: grid;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+
+#logo {
+  display: block;
+  width: 1000px;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+}
+
+input {
+  width: fit-content;
+  font-size: 50px;
+  margin-bottom: 15px;
+  font-family: Dialog;
+}
+
+#start_quiz {
+  font-size: 80px;
+  align-items: center;
+}
+
+/* ---------------------------------------------------------------------------------- */
+
+#quizView {
+  /*display: grid;*/
+  justify-content: center;
+  row-gap: 15px;
+  column-gap: 15px;
+  grid-template-columns: 2fr 4fr 1fr 1fr;
+  grid-template-rows: 3fr 3fr 8fr 2fr 2fr;
+  grid-template-areas:
+          "_header _header question_num num_of_questions"
+          "_header _header remaining_time penalty"
+          "question_window question_window question_window question_window"
+          "previous_question . next_question next_question"
+          "cancel_quiz . stop_quiz stop_quiz";
+  padding: 20px;
+  display: none;
+}
+
+body, input {
+  font-family: Dialog;
+}
+
+#quizViewHeader {
+  font-size: 70px;
+  grid-area: _header;
+  text-align: left;
+}
+
+.utility {
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  grid-template-columns: auto;
+  border: solid;
+}
+
+.utilities_text {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  border-bottom: solid;
+  background-color: lightsteelblue;
+}
+
+.utilities_var {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 0;
+  margin-bottom: 0;
+  background-color: #c9ddf7;
+}
+
+
+#question_num {
+  grid-template-areas: "question_num_text" "question_num_num";
+}
+
+#question_num_text {
+  grid-area: question_num_text;
+}
+
+#question_num_num {
+  grid-area: question_num_num;
+}
+
+
+#num_of_questions {
+  grid-template-areas: "num_of_questions_text" "num_of_questions_num";
+}
+
+#num_of_questions_text {
+  grid-area: num_of_questions_text;
+
+}
+
+#num_of_questions_num {
+  grid-area: num_of_questions_num;
+}
+
+#remaining_time {
+  grid-template-areas: "remaining_time_text" "remaining_time_num";
+}
+
+#remaining_time_text {
+  grid-area: remaining_time_text;
+}
+
+#remaining_time_num {
+  grid-area: remaining_time_num;
+}
+
+
+#penalty {
+  grid-template-areas: "penalty_text" "penalty_num";
+}
+
+#penalty_text {
+  grid-area: penalty_text;
+}
+
+#penalty_num {
+  grid-area: penalty_num;
+}
+
+#question_window {
+  grid-area: question_window;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: auto;
+  grid-template-areas: "question_text" "answer_text";
+  text-align: center;
+  font-size: 60px;
+}
+#question_text {
+  grid-area: question_text;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+#answer_text {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  grid-area: answer_text;
+  font-size: 60px;
+  text-align: center;
+  width: 50%;
+}
+
+
+#previous_question {
+  grid-area: previous_question;
+}
+
+#cancel_quiz {
+  grid-area: cancel_quiz;
+}
+
+#next_question {
+  grid-area: next_question;
+}
+
+#stop_quiz {
+  grid-area: stop_quiz;
+}
+
+input {
+  font-size: 30px;
+  color: #393939;
+}
+
+
+/* ---------------------------------------------------------------------------------- */
+
+#summaryView {
+  display: none;
+  padding: 10px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2fr 1fr 2fr auto;
+  grid-template-areas:
+          "summaryHeader summaryHeader"
+          "timeLeft penaltySum"
+          "totalScore totalScore"
+          "summaryTable summaryTable";
+
+  row-gap: 15px;
+  column-gap: 15px;
+}
+
+.summaryViewHeader {
+  grid-area: summaryHeader;
+  font-size: 100px;
+  text-align: center;
+  align-self: center;
+}
+
+#timeLeft {
+  grid-area: timeLeft;
+  font-size: 30px;
+  text-align: center;
+  height: 100%;
+}
+
+#penaltySum {
+  grid-area: penaltySum;
+  font-size: 30px;
+  text-align: center;
+  height: 100%;
+}
+
+#totalScore {
+  grid-area: totalScore;
+  font-size: 70px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#summaryTable {
+  grid-area: summaryTable;
+  text-align: center;
+  margin-left:auto;
+  margin-right:auto;
+  /*border: solid;*/
+  font-size: 30px;
+  width: 50%;
+  padding: 0px;
+}
+
+#summaryTableThread th {
+  border: solid black;
+  background-color: #c9ddf7;
+  padding: 0;
+}
+
+#summaryTableBody td {
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+
+
+#summaryTableBody {
+  border: solid black;
+  border-collapse: collapse;
+}
+
+/* ---------------------------------------------------------------------------------- */
+
+#summaryStatsView {
+  display: grid;
+  padding: 10px;
+  grid-template-columns: auto;
+  grid-template-rows: 1fr auto auto;
+  grid-template-areas:
+          "summaryHeader"
+          "summaryTable"
+          "summaryBest";
+
+  row-gap: 15px;
+  column-gap: 15px;
+}
+
+#summaryBest {
+  grid-area: summaryBest;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bestUser {
+  grid-area: summaryBest;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px;
+}
+
+.bestUsr {
+  align-self: center;
+  font-size: 30px;
+}
+
+
+#summaryBestTable {
+  grid-area: summaryTable;
+  text-align: center;
+  margin-left:auto;
+  margin-right:auto;
+  /*border: solid;*/
+  font-size: 30px;
+  width: 50%;
+  padding: 0px;
+}
+
+#summaryBestTableThread th {
+  border: solid black;
+  background-color: #c9ddf7;
+  padding: 0;
+}
+
+#summaryBestTableBody td {
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+
+
+#summaryBestTableBody {
+  border: solid black;
+  border-collapse: collapse;
+}
+
+
+
+/* ---------------------------------------------------------------------------------- */
+
+#bestResultsView {
+  display: grid;
+  padding: 10px;
+  grid-template-columns: auto;
+  grid-template-rows: 1fr 1fr auto;
+  grid-template-areas:
+          "bestResultsViewHeader"
+          "goBackToMainView"
+          "bestResultsTable";
+
+  row-gap: 15px;
+  column-gap: 15px;
+}
+
+#bestResultsViewHeader {
+  grid-area: bestResultsViewHeader;
+  font-size: 100px;
+  text-align: center;
+  align-self: center;
+}
+
+#goBackToMainView {
+  grid-area: goBackToMainView;
+  background-color: #c9ddf7;
+  color: black;
+  border-color: steelblue;
+  font-size: 50px;
+  width: 80%;
+  justify-self: center;
+}
+
+#bestResultsTableThread th{
+  border: solid black;
+  background-color: #c9ddf7;
+}
+
+#bestResultsTable {
+  grid-area: bestResultsTable;
+  text-align: center;
+  margin-left:auto;
+  margin-right:auto;
+  font-size: 30px;
+  width: 70%;
+  padding: 0px;
+}
+
+
+
+@media screen and (max-width: 1400px) {
+
+  #logo {
+    width: 700px;
+    height: 300px;
+    margin-bottom: 50px;
+  }
+
+  #start_quiz {
+    font-size: 50px;
+  }
+
+  #best_results
+  {
+    font-size: 25px;
+  }
+
+  /* ---------------------------------------------------------------------------------- */
+
+  #quizView {
+    grid-template-columns: 2fr 2fr 2fr 2fr;
+    grid-template-areas:
+            "_header _header question_num num_of_questions"
+            "_header _header remaining_time penalty"
+            "question_window question_window question_window question_window"
+            "previous_question . . next_question"
+            "cancel_quiz . . stop_quiz";
+  }
+
+  #quizViewHeader {
+    font-size: 40px;
+  }
+
+  input {
+    font-size: 20px;
+  }
+
+  #question_window {
+    font-size: 40px;
+  }
+
+  #answer_text {
+    font-size: 40px;
+  }
+
+  /* ---------------------------------------------------------------------------------- */
+
+  .summaryViewHeader {
+    font-size: 60px;
+    width: 100%;
+  }
+
+  /* ---------------------------------------------------------------------------------- */
+
+  #bestResultsView {
+    grid-template-rows: 2fr 1fr auto;
+  }
+
+  #bestResultsTable {
+    font-size: 30px;
+    width: 86%;
+    padding: 0;
+  }
+}
+
+
+@media screen and (max-width: 750px) {
+
+  #logo {
+    width: 100%;
+    height: 250px;
+    margin-bottom: 20px;
+  }
+
+  #start_quiz {
+    font-size: 30px;
+    margin-bottom: 5px;
+  }
+
+  #best_results
+  {
+    font-size: 20px;
+  }
+
+  /* ---------------------------------------------------------------------------------- */
+
+  .utility {
+    grid-template-rows: 1fr 1fr;
+    border-width: thin;
+  }
+
+  .utilities_text {
+    font-size: 12px;
+    border-width: thin;
+  }
+
+  .utilities_var {
+    font-size: 20px;
+  }
+
+  #quizView {
+    grid-template-rows: 3fr 5fr 2fr 2fr;
+    grid-template-areas:
+            "question_num num_of_questions remaining_time penalty"
+            "question_window question_window question_window question_window"
+            "previous_question previous_question next_question next_question"
+            "cancel_quiz cancel_quiz stop_quiz stop_quiz";
+    padding: 0px;
+    row-gap: 10px;
+    column-gap: 5px;
+  }
+
+  #quizViewHeader {
+    display: none;
+  }
+
+  #question_window {
+    font-size: 25px;
+  }
+
+  #answer_text {
+    font-size: 25px;
+  }
+
+  input {
+    font-size: 15px;
+  }
+
+  /* ---------------------------------------------------------------------------------- */
+
+  #summaryView {
+    padding: 3px;
+    grid-template-columns: auto;
+    grid-template-rows: 2fr 2fr 2fr 2fr auto;
+    grid-template-areas:
+            "summaryHeader"
+            "timeLeft"
+            "penaltySum"
+            "totalScore"
+            "summaryTable";
+
+    row-gap: 3px;
+    column-gap: 3px;
+  }
+
+  .summaryViewHeader {
+    font-size: 30px;
+    width: 100%;
+    margin: 0;
+  }
+
+  #summaryTable {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  #timeLeft {
+    font-size: 20px;
+    margin: 0;
+  }
+
+  #penaltySum {
+    font-size: 20px;
+    margin: 0;
+  }
+
+  #totalScore {
+    font-size: 40px;
+  }
+
+  /* ---------------------------------------------------------------------------------- */
+
+  #bestResultsView {
+    grid-template-rows: 2fr 1fr auto;
+    padding: 3px;
+    row-gap: 3px;
+    column-gap: 3px;
+  }
+
+  #bestResultsViewHeader {
+    font-size: 40px;
+  }
+
+  #goBackToMainView {
+    font-size: 30px;
+    width: 100%;
+  }
+
+  #bestResultsTable {
+    font-size: 20px;
+    width: 100%;
+    padding: 0;
+  }
+}
+

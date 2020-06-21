@@ -1,0 +1,9 @@
+extends layout
+block content
+    div(class='chooseQuiz')
+        h1="Wybierz quiz by zobaczyć statystyki"
+        ul(class="login")
+            each quiz in quizzes
+                li(class="quizToChoose")
+                    a(href="results/" + quiz.id class="name") #{quiz.name}
+                    p(hidden) #{quiz.id}

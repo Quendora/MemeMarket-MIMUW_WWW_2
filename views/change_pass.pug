@@ -1,0 +1,34 @@
+extends layout
+block content
+    style
+        | .error { color: red; }
+    div(class="login")
+        form(method="POST" action='/changepass')
+            input(type="hidden" name="_csrf" value=csrfToken)
+            label(for="oldpassword") Stare  hasło
+            input(type="password" id="oldpassword" name="oldpassword" value=oldpassword)
+            if errors.oldpassword
+                br
+                span(class="error") #{errors.oldpassword}
+
+            br
+            br
+
+            label(for="newpassword1") Nowe  hasło
+                input(type="password" id="newpassword1" name="newpassword1" value=newpassword1)
+                if errors.newpassword1
+                    br
+                    span(class="error") #{errors.newpassword1}
+
+            br
+            br
+
+            label(for="newpassword2") Powtórz hasło
+                input(type="password" id="newpassword2" name="newpassword2" value=newpassword2)
+                if errors.newpassword2
+                    br
+                    span(class="error") #{errors.newpassword2}
+
+            br
+            br
+            input(type="submit" value="Zmień hasło")
