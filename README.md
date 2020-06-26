@@ -7,7 +7,7 @@ npm run tsc
 
 ## How to run server
 ```
-npm run server
+npm run start
 ```
 
 ## How to run tests
